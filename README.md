@@ -1,30 +1,28 @@
 # HOLLOW
 
-A standalone VR multiplayer horror game for Meta Quest 3S, built with Unity.
+**HOLLOW** is an original VR multiplayer horror game prototype for Meta Quest 3S, developed in Unity by Living Room Studios.
 
-## Build 0.1 — movement prototype
+## Build 0.1 — Quest movement prototype
+The first playable milestone is a greybox test room with real OpenXR head/controller tracking, visible ape hands, and early arm-push locomotion. There is no joystick walking.
 
-The first milestone is a small offline test room with tracked VR hands and arm-powered ape locomotion.
+### Project
+- Unity: 6000.0.40f1
+- Target: Meta Quest 3S / Android
+- XR: OpenXR
+- Architecture: ARM64
+- Package manifest: `Packages/manifest.json`
 
-### Planned for this milestone
-- Meta Quest 3S target (Android)
-- OpenXR controller tracking
-- Gorilla-style arm locomotion: push against the floor and walls to move
-- No joystick walking
-- A simple test room and visible hands/arms
+### Open in Unity
+1. Install Unity 6.0.40f1 with Android Build Support, Android SDK & NDK Tools, and OpenJDK.
+2. Open this repository in Unity Hub.
+3. Allow Package Manager to resolve dependencies.
+4. Enable OpenXR under Project Settings → XR Plug-in Management → Android, and enable the Meta Quest Touch Controller Profile.
+5. Choose **HOLLOW → Build Prototype Scene** from the Unity menu.
+6. Press Play with an OpenXR headset, or build to Android for Quest testing.
 
-### Unity setup
-1. Install a current Unity LTS release with **Android Build Support** (Android SDK & NDK tools and OpenJDK).
-2. Create a 3D URP or 3D Core project named `HOLLOW`.
-3. In Package Manager, install **XR Plugin Management**, **OpenXR Plugin**, and **XR Interaction Toolkit**.
-4. In Project Settings → XR Plug-in Management, enable OpenXR for Android. Enable the Meta Quest Touch Controller profile in OpenXR interaction profiles.
-5. Add an XR Origin (Action-based) to the scene and configure its left/right controller transforms to follow the Quest controllers.
-6. Add a Rigidbody to the player root (freeze rotation) and attach `HollowGorillaLocomotion.cs`. Assign the XR Origin root and tracked left/right hand transforms.
-7. Create a floor and wall colliders. Put the player root slightly above the floor and test with the headset guardian enabled.
-8. Build for Android/ARM64. Use the Android build settings recommended by your installed Unity/OpenXR versions.
+### GitHub APK build
+The workflow `.github/workflows/build-quest-apk.yml` builds an ARM64 APK. Configure the repository Actions secrets `UNITY_LICENSE`, `UNITY_EMAIL`, and `UNITY_PASSWORD`, then run **Build HOLLOW for Meta Quest** under Actions.
 
-### Important
-This repository currently contains the starter source and setup notes, not a compiled APK or a complete Unity scene. Controller tracking and locomotion must be tested in Unity on the Quest 3S. Multiplayer, monster AI, maps, cosmetics, and final character art are later milestones.
+See [Build 0.1 notes](Docs/BUILD_0_1.md).
 
-## Controls
-Move naturally by placing/pushing your tracked hands against solid surfaces. There is no artificial joystick locomotion in this prototype.
+This is an early prototype. Multiplayer, monster AI, full ape character art, audio, and finished maps are future milestones.
